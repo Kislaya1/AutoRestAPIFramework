@@ -74,7 +74,7 @@ public class BookingTests {
 
     @ParameterizedTest
     @ArgumentsSource(BookingArgumentsProvider.class)
-    public void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
+    void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
         // Act
         Response updateNewBookingResponse = BookingAPI.uses(ADMIN).toUpdateBookingPresent(updatedBookingRequest, bookingId);
         // Assert
@@ -85,7 +85,7 @@ public class BookingTests {
     }
 
     @Test
-    public void assertThatUserCanGetAllBookings() {
+    void assertThatUserCanGetAllBookings() {
         //Act
         Response getAllBookingResponse = BookingAPI.uses(DEVELOPER).toGetAllBookingsPresent();
 
@@ -96,7 +96,7 @@ public class BookingTests {
     }
 
     @Test
-    public void assertThatUserCanGetSingleBooking() {
+    void assertThatUserCanGetSingleBooking() {
         //Act
         Response getSingleBookingResponse = BookingAPI.uses(DEVELOPER).toGetBookingPresent(bookingId);
 
@@ -108,7 +108,7 @@ public class BookingTests {
 
     @ParameterizedTest
     @ArgumentsSource(BookingArgumentsProvider.class)
-    public void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
+    void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
         //Act
         Response partialUpdatedBookingResponse = BookingAPI.uses(ADMIN).toPartiallyUpdateBookingPresent(partialUpdatedBookingRequest, bookingId);
 
