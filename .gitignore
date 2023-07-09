@@ -1,0 +1,22 @@
+### IntelliJ IDE ###
+.idea/
+*.iml
+*.iws
+
+### Eclipse IDE ###
+.classpath
+.project
+.settings/
+
+### Netbeans
+build/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+### Maven Specific
+.mvn/
+
+### Project Specific ###
+report-output/
+target/
