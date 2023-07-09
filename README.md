@@ -53,4 +53,4 @@ For this case username and password can be fetched from this link
 - https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Special Mentions </span>
-
+1. 
