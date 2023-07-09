@@ -26,8 +26,16 @@ User is not required to code for loading, converting and managing of properties 
 - [x] Schema Validation is also part of this framework.
 - [x] Uses Parallel Execution for which configuration is available under junit-platform.properties.:
 
-
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Challenges Faced </span>
+1. 
+
+## <span style="font-family: Calibri; font-size: 2.8em;"> Tools Set </span>
+1. 
+
+## <span style="font-family: Calibri; font-size: 2.8em;"> Api Test Design (Diagram) </span>
+
+
+## <span style="font-family: Calibri; font-size: 2.8em;"> Steps to Execute </span>
 
 use the below command to run the test
 
@@ -44,4 +52,5 @@ For this case username and password can be fetched from this link
 
 - https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken
 
+## <span style="font-family: Calibri; font-size: 2.8em;"> Special Mentions </span>
 
