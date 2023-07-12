@@ -3,7 +3,6 @@ package com.auto.rest.api.modules.booking;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 import com.auto.rest.api.argumentProviders.BookingArgumentsProvider;
 import com.auto.rest.api.authorization.scopeFactory.UserScope;
-import com.auto.rest.api.config.production.IProdEnvConfig;
 import com.auto.rest.api.controller.booking.BookingAPI;
 import com.auto.rest.api.enums.CommonLocations;
 import com.auto.rest.api.pojo.booking.Booking;
@@ -11,7 +10,6 @@ import com.auto.rest.api.pojo.booking.BookingData;
 import com.auto.rest.api.reporting.FrameworkListener;
 import com.auto.rest.api.utils.DataMockUtils;
 import io.restassured.response.Response;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -49,7 +47,6 @@ import static org.apache.http.HttpStatus.SC_OK;
 
 @ExtendWith(FrameworkListener.class)
 public class BookingTests {
-  private final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
   private String bookingId;
 
   @BeforeAll
