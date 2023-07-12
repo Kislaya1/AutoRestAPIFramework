@@ -27,17 +27,18 @@ import static org.apache.http.HttpStatus.SC_OK;
 
 /*
  *                      To Do Checklist
- * Add more test cases under Booking Test File
+ * Refactor code for reporting.
  * Get the know about what is "SELF_TYPE" for interview question.
  * Learn about Junit 5 for interview.
  * Read about Slf4j.
  * -------------------------------------------------------------------------------
  * Done
+ * Add more test cases under Booking Test File -- Done
  * Logger and Reporting for Framework -- Done
  * Run the test cases in Parallel - Done
  * Scope for Auth API (Scope Agnostic) - Done
  * uses <some> pattern to fetch the token so that it is accessed only when needed and create scope for auth token. - Singleton
- * Check Amuthan video on pojo fixture to create diff Pojo's - Done
+ * Check video on pojo fixture to create diff Pojo's - Done
  * Check for Dates under Date Strategy or ArgumentProvider. - Done
  * Fix BookingTemplates - Done
  * Schema Validations. (Do this during assertion)  -- Done
