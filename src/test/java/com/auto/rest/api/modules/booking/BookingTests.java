@@ -6,7 +6,6 @@ import com.auto.rest.api.authorization.scopeFactory.UserScope;
 import com.auto.rest.api.config.production.IProdEnvConfig;
 import com.auto.rest.api.controller.booking.BookingAPI;
 import com.auto.rest.api.enums.CommonLocations;
-import com.auto.rest.api.enums.SchemaFileLocations;
 import com.auto.rest.api.pojo.booking.Booking;
 import com.auto.rest.api.pojo.booking.BookingData;
 import com.auto.rest.api.reporting.FrameworkListener;
@@ -21,6 +20,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
+import static com.auto.rest.api.enums.SchemaFileLocations.*;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
 
@@ -70,7 +70,7 @@ public class BookingTests {
         .statusCodeIs(SC_OK)
         .hasBookingId(bookingId)
         .hasNewBookingCreated(bookingBody)
-        .matchesSchema(SchemaFileLocations.BOOKING_DATA_SCHEMA.getFilePath())
+        .matchesSchema(BOOKING_DATA_SCHEMA.getFilePath())
         .assertAll();
   }
 
@@ -84,7 +84,7 @@ public class BookingTests {
     BookingAssert.verify(updateNewBookingResponse)
         .statusCodeIs(SC_OK)
         .hasBooking(updatedBookingRequest)
-        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .matchesSchema(BOOKING_SCHEMA.getFilePath())
         .assertAll();
   }
 
@@ -96,7 +96,7 @@ public class BookingTests {
     // Assert
     BookingAssert.verify(getAllBookingResponse)
         .statusCodeIs(SC_OK)
-        .matchesSchema(SchemaFileLocations.GET_ALL_BOOKING_SCHEMA.getFilePath())
+        .matchesSchema(GET_ALL_BOOKING_SCHEMA.getFilePath())
         .assertAll();
   }
 
@@ -109,7 +109,7 @@ public class BookingTests {
     // Assert
     BookingAssert.verify(getSingleBookingResponse)
         .statusCodeIs(SC_OK)
-        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .matchesSchema(BOOKING_SCHEMA.getFilePath())
         .assertAll();
   }
 
@@ -125,7 +125,7 @@ public class BookingTests {
     BookingAssert.verify(partialUpdatedBookingResponse)
         .statusCodeIs(SC_OK)
         .hasBooking(partialUpdatedBookingRequest)
-        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .matchesSchema(BOOKING_SCHEMA.getFilePath())
         .assertAll();
   }
 
