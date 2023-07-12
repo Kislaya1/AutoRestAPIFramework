@@ -1,4 +1,4 @@
-# <span style="font-family: Calibri; font-size: 2.8em;"> Interactive Rest API Framework </span>
+# <span style="font-family: Calibri; font-size: 2.8em;"> Auto Rest API Framework </span>
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Introduction </span>
 Hi All, I created this API Framework in order to automate REST APIs.
 
