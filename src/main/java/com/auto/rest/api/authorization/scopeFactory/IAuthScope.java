@@ -9,13 +9,13 @@ import static com.auto.rest.api.authorization.IHeaderUtils.withCookieHeader;
 
 public interface IAuthScope {
 
-    static IAuthScope admin() {
-        return () -> withCookieHeader(TokenAPI.getInstance()).fetch();
-    }
+  static IAuthScope admin() {
+    return () -> withCookieHeader(TokenAPI.getInstance()).fetch();
+  }
 
-    static IAuthScope developer() {
-        return () -> withBasicHeaders().fetch();
-    }
+  static IAuthScope developer() {
+    return () -> withBasicHeaders().fetch();
+  }
 
-    Map scope();
+  Map scope();
 }

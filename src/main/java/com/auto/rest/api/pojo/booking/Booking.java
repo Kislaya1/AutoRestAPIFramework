@@ -18,25 +18,25 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Booking {
-    @PodamStrategyValue(value = NameStrategy.class)
-    @JsonProperty("firstname")
-    private String firstName;
+  @PodamStrategyValue(value = NameStrategy.class)
+  @JsonProperty("firstname")
+  private String firstName;
 
-    @PodamStrategyValue(value = NameStrategy.class)
-    @JsonProperty("lastname")
-    private String lastName;
+  @PodamStrategyValue(value = NameStrategy.class)
+  @JsonProperty("lastname")
+  private String lastName;
 
-    @JsonProperty("totalprice")
-    @PodamLongValue(minValue = 1_000L, maxValue = 1_00_000L)
-    private long totalPrice;
+  @JsonProperty("totalprice")
+  @PodamLongValue(minValue = 1_000L, maxValue = 1_00_000L)
+  private long totalPrice;
 
-    @JsonProperty("depositpaid")
-    private boolean depositPaid;
+  @JsonProperty("depositpaid")
+  private boolean depositPaid;
 
-    @JsonProperty("bookingdates")
-    private BookingDates bookingDates;
+  @JsonProperty("bookingdates")
+  private BookingDates bookingDates;
 
-    @PodamStrategyValue(value = MetaDataStrategy.class)
-    @JsonProperty("additionalneeds")
-    private String additionalNeeds;
+  @PodamStrategyValue(value = MetaDataStrategy.class)
+  @JsonProperty("additionalneeds")
+  private String additionalNeeds;
 }

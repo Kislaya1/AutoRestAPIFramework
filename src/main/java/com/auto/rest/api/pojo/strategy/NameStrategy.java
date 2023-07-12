@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class NameStrategy implements AttributeStrategy<String> {
-    @Override
-    public String getValue(Class<?> aClass, List<Annotation> list) {
-        Faker faker = new Faker();
-        return Stream.of(faker.name().fullName().split("\\s+"))
-                .findAny()
-                .orElseThrow();
-    }
+  @Override
+  public String getValue(Class<?> aClass, List<Annotation> list) {
+    Faker faker = new Faker();
+    return Stream.of(faker.name().fullName().split("\\s+")).findAny().orElseThrow();
+  }
 }

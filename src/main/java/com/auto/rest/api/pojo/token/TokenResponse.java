@@ -11,6 +11,6 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class TokenResponse {
-    @JsonProperty("token")
-    String token;
+  @JsonProperty("token")
+  String token;
 }

@@ -7,10 +7,20 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class MetaDataStrategy implements AttributeStrategy<String> {
-    @Override
-    public String getValue(Class<?> attrType, List<Annotation> attrAnnotations) {
-        return Stream.of("Writing", "Blogging", "Learning Languages", "Photography", "Sports", "Travel", "Reading", "Making Music", "Art", "Dance")
-                .findAny()
-                .orElseThrow();
-    }
+  @Override
+  public String getValue(Class<?> attrType, List<Annotation> attrAnnotations) {
+    return Stream.of(
+            "Writing",
+            "Blogging",
+            "Learning Languages",
+            "Photography",
+            "Sports",
+            "Travel",
+            "Reading",
+            "Making Music",
+            "Art",
+            "Dance")
+        .findAny()
+        .orElseThrow();
+  }
 }

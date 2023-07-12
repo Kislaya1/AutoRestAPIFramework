@@ -6,11 +6,11 @@ import com.auto.rest.api.authorization.scopeFactory.UserScope;
 import com.auto.rest.api.config.production.IProdEnvConfig;
 import com.auto.rest.api.controller.booking.BookingAPI;
 import com.auto.rest.api.enums.CommonLocations;
-import com.auto.rest.api.enums.SchemaFileNames;
-import com.auto.rest.api.reporting.FrameworkListener;
-import com.auto.rest.api.utils.DataMockUtils;
+import com.auto.rest.api.enums.SchemaFileLocations;
 import com.auto.rest.api.pojo.booking.Booking;
 import com.auto.rest.api.pojo.booking.BookingData;
+import com.auto.rest.api.reporting.FrameworkListener;
+import com.auto.rest.api.utils.DataMockUtils;
 import io.restassured.response.Response;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -49,82 +49,92 @@ import static org.apache.http.HttpStatus.SC_OK;
 
 @ExtendWith(FrameworkListener.class)
 public class BookingTests {
-    private final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
-    private String bookingId;
+  private final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
+  private String bookingId;
 
-    @BeforeAll
-    public static void setUpClass() {
-        FixtureFactoryLoader.loadTemplates(CommonLocations.TEMPLATES_LOCATION.get());
-    }
+  @BeforeAll
+  public static void setUpClass() {
+    FixtureFactoryLoader.loadTemplates(CommonLocations.TEMPLATES_LOCATION.get());
+  }
 
-    @BeforeEach
-    public void setUp() {
-        Booking bookingBody = DataMockUtils.fetchBookingRequestPojo().mockData();
-        // Act
-        Response createdBookingResponse = BookingAPI.uses(UserScope.ADMIN).toCreateNewBooking(bookingBody);
-        // Fetch Booking ID
-        bookingId = createdBookingResponse.as(BookingData.class).getBookingId();
-        // Assert
-        BookingAssert.verify(createdBookingResponse).statusCodeIs(SC_OK)
-                .hasBookingId(bookingId)
-                .hasNewBookingCreated(bookingBody)
-                .matchesSchema(config.BOOKING_SCHEMA_DIR(SchemaFileNames.BOOKING_DATA_SCHEMA.getFilePath()))
-                .assertAll();
-    }
+  @BeforeEach
+  public void setUp() {
+    Booking bookingBody = DataMockUtils.fetchBookingRequestPojo().mockData();
+    // Act
+    Response createdBookingResponse =
+        BookingAPI.uses(UserScope.ADMIN).toCreateNewBooking(bookingBody);
+    // Fetch Booking ID
+    bookingId = createdBookingResponse.as(BookingData.class).getBookingId();
+    // Assert
+    BookingAssert.verify(createdBookingResponse)
+        .statusCodeIs(SC_OK)
+        .hasBookingId(bookingId)
+        .hasNewBookingCreated(bookingBody)
+        .matchesSchema(SchemaFileLocations.BOOKING_DATA_SCHEMA.getFilePath())
+        .assertAll();
+  }
 
-    @ParameterizedTest
-    @ArgumentsSource(BookingArgumentsProvider.class)
-    void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
-        // Act
-        Response updateNewBookingResponse = BookingAPI.uses(UserScope.ADMIN).toUpdateBookingPresent(updatedBookingRequest, bookingId);
-        // Assert
-        BookingAssert.verify(updateNewBookingResponse).statusCodeIs(SC_OK)
-                .hasBooking(updatedBookingRequest)
-                .matchesSchema(config.BOOKING_SCHEMA_DIR(SchemaFileNames.BOOKING_SCHEMA.getFilePath()))
-                .assertAll();
-    }
+  @ParameterizedTest
+  @ArgumentsSource(BookingArgumentsProvider.class)
+  void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
+    // Act
+    Response updateNewBookingResponse =
+        BookingAPI.uses(UserScope.ADMIN).toUpdateBookingPresent(updatedBookingRequest, bookingId);
+    // Assert
+    BookingAssert.verify(updateNewBookingResponse)
+        .statusCodeIs(SC_OK)
+        .hasBooking(updatedBookingRequest)
+        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .assertAll();
+  }
 
-    @Test
-    void assertThatUserCanGetAllBookings() {
-        //Act
-        Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
+  @Test
+  void assertThatUserCanGetAllBookings() {
+    // Act
+    Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
 
-        //Assert
-        BookingAssert.verify(getAllBookingResponse).statusCodeIs(SC_OK)
-                .matchesSchema(config.BOOKING_SCHEMA_DIR(SchemaFileNames.GET_ALL_BOOKING_SCHEMA.getFilePath()))
-                .assertAll();
-    }
+    // Assert
+    BookingAssert.verify(getAllBookingResponse)
+        .statusCodeIs(SC_OK)
+        .matchesSchema(SchemaFileLocations.GET_ALL_BOOKING_SCHEMA.getFilePath())
+        .assertAll();
+  }
 
-    @Test
-    void assertThatUserCanGetSingleBooking() {
-        //Act
-        Response getSingleBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetBookingPresent(bookingId);
+  @Test
+  void assertThatUserCanGetSingleBooking() {
+    // Act
+    Response getSingleBookingResponse =
+        BookingAPI.uses(UserScope.DEVELOPER).toGetBookingPresent(bookingId);
 
-        //Assert
-        BookingAssert.verify(getSingleBookingResponse).statusCodeIs(SC_OK)
-                .matchesSchema(config.BOOKING_SCHEMA_DIR(SchemaFileNames.BOOKING_SCHEMA.getFilePath()))
-                .assertAll();
-    }
+    // Assert
+    BookingAssert.verify(getSingleBookingResponse)
+        .statusCodeIs(SC_OK)
+        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .assertAll();
+  }
 
-    @ParameterizedTest
-    @ArgumentsSource(BookingArgumentsProvider.class)
-    void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
-        //Act
-        Response partialUpdatedBookingResponse = BookingAPI.uses(UserScope.ADMIN).toPartiallyUpdateBookingPresent(partialUpdatedBookingRequest, bookingId);
+  @ParameterizedTest
+  @ArgumentsSource(BookingArgumentsProvider.class)
+  void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
+    // Act
+    Response partialUpdatedBookingResponse =
+        BookingAPI.uses(UserScope.ADMIN)
+            .toPartiallyUpdateBookingPresent(partialUpdatedBookingRequest, bookingId);
 
-        //Assert
-        BookingAssert.verify(partialUpdatedBookingResponse).statusCodeIs(SC_OK)
-                .hasBooking(partialUpdatedBookingRequest)
-                .matchesSchema(config.BOOKING_SCHEMA_DIR(SchemaFileNames.BOOKING_SCHEMA.getFilePath()))
-                .assertAll();
-    }
+    // Assert
+    BookingAssert.verify(partialUpdatedBookingResponse)
+        .statusCodeIs(SC_OK)
+        .hasBooking(partialUpdatedBookingRequest)
+        .matchesSchema(SchemaFileLocations.BOOKING_SCHEMA.getFilePath())
+        .assertAll();
+  }
 
-
-    @AfterEach
-    public void tearDown() {
-        // Act
-        Response deletedBookingResponse = BookingAPI.uses(UserScope.ADMIN).toDeleteBookingPresent(bookingId);
-        // Assert
-        BookingAssert.verify(deletedBookingResponse).statusCodeIs(SC_CREATED);
-    }
+  @AfterEach
+  public void tearDown() {
+    // Act
+    Response deletedBookingResponse =
+        BookingAPI.uses(UserScope.ADMIN).toDeleteBookingPresent(bookingId);
+    // Assert
+    BookingAssert.verify(deletedBookingResponse).statusCodeIs(SC_CREATED);
+  }
 }

@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class BookingArgumentsProvider implements ArgumentsProvider {
-    @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
-        List<Booking> validBookingList = Fixture.from(Booking.class).gimme(2, "valid");
-        return validBookingList.stream().map(Arguments::of);
-    }
+  @Override
+  public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+    List<Booking> validBookingList = Fixture.from(Booking.class).gimme(2, "valid");
+    return validBookingList.stream().map(Arguments::of);
+  }
 }

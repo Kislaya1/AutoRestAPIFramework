@@ -15,11 +15,11 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class BookingDates {
-    @PodamStrategyValue(value = DateStrategy.class)
-    @JsonProperty("checkin")
-    private String checkIn;
+  @PodamStrategyValue(value = DateStrategy.class)
+  @JsonProperty("checkin")
+  private String checkIn;
 
-    @PodamStrategyValue(value = DateStrategy.class)
-    @JsonProperty("checkout")
-    private String checkOut;
+  @PodamStrategyValue(value = DateStrategy.class)
+  @JsonProperty("checkout")
+  private String checkOut;
 }

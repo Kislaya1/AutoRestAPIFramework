@@ -11,28 +11,25 @@ import java.util.Map;
 import java.util.Optional;
 
 @Value.Immutable
-@Value.Style(
-        stagedBuilder = true,
-        build = "createHeader"
-)
+@Value.Style(stagedBuilder = true, build = "createHeader")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public interface IHeader {
-    @JsonProperty("Content-Type")
-    Optional<String> requestContentType();
+  @JsonProperty("Content-Type")
+  Optional<String> requestContentType();
 
-    @JsonProperty("Accept")
-    Optional<String> responseContentType();
+  @JsonProperty("Accept")
+  Optional<String> responseContentType();
 
-    @JsonProperty("Cookie")
-    Optional<String> cookie();
+  @JsonProperty("Cookie")
+  Optional<String> cookie();
 
-    @JsonProperty("Authorization")
-    Optional<String> authorization();
+  @JsonProperty("Authorization")
+  Optional<String> authorization();
 
-    default Map fetchHeader() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new Jdk8Module());
-        return objectMapper.convertValue(this, Map.class);
-    }
+  default Map fetchHeader() {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new Jdk8Module());
+    return objectMapper.convertValue(this, Map.class);
+  }
 }

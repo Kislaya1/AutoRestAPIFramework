@@ -10,26 +10,27 @@ import static com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodType.POST;
 
 @SuppressWarnings("unchecked")
 public class TokenAPI {
-    private static final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
-    private static final String baseUri = config.BASE_URL();
+  private static final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
+  private static final String baseUri = config.BASE_URL();
 
-    private final String authToken;
+  private final String authToken;
 
-    private TokenAPI() {
-        this.authToken = new ApiBuilder()
-                .baseUri(baseUri)
-                .headers(IHeaderUtils.withBasicHeaders().fetch())
-                .body(TokenRequest.getTokenRequest())
-                .fetchResponse(POST, config.AUTH_ENDPOINT())
-                .as(TokenResponse.class)
-                .getToken();
-    }
+  private TokenAPI() {
+    this.authToken =
+        new ApiBuilder()
+            .baseUri(baseUri)
+            .headers(IHeaderUtils.withBasicHeaders().fetch())
+            .body(TokenRequest.getTokenRequest())
+            .fetchResponse(POST, config.AUTH_ENDPOINT())
+            .as(TokenResponse.class)
+            .getToken();
+  }
 
-    public static synchronized String getInstance() {
-        return TokenHelper.tokenAPIInstance.authToken;
-    }
+  public static synchronized String getInstance() {
+    return TokenHelper.tokenAPIInstance.authToken;
+  }
 
-    private static class TokenHelper {
-        private static final TokenAPI tokenAPIInstance = new TokenAPI();
-    }
+  private static class TokenHelper {
+    private static final TokenAPI tokenAPIInstance = new TokenAPI();
+  }
 }

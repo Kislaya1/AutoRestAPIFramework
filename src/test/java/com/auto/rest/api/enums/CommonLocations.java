@@ -1,15 +1,15 @@
 package com.auto.rest.api.enums;
 
 public enum CommonLocations {
-    TEMPLATES_LOCATION("com.rest.api.pro.templates");
+  TEMPLATES_LOCATION("com.rest.api.pro.templates");
 
-    private String location;
+  private String location;
 
-    CommonLocations(final String location) {
-        this.location = location;
-    }
+  CommonLocations(final String location) {
+    this.location = location;
+  }
 
-    public String get() {
-        return this.location;
-    }
+  public String get() {
+    return this.location;
+  }
 }
