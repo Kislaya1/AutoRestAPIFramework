@@ -17,5 +17,5 @@ public interface IAuthScope {
     return () -> withBasicHeaders().fetch();
   }
 
-  Map scope();
+  Map<String, String> scope();
 }

@@ -26,5 +26,5 @@ public interface IHeaderUtils {
     return basicHeaders().cookie("token=" + tokenId);
   }
 
-  Map fetch();
+  Map<String, String> fetch();
 }

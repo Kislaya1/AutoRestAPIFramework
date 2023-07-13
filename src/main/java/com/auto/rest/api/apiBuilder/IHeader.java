@@ -27,7 +27,7 @@ public interface IHeader {
   @JsonProperty("Authorization")
   Optional<String> authorization();
 
-  default Map fetchHeader() {
+  default Map<String, String> fetchHeader() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new Jdk8Module());
     return objectMapper.convertValue(this, Map.class);

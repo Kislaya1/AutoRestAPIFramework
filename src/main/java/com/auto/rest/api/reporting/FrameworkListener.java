@@ -22,7 +22,7 @@ public class FrameworkListener
   @Override
   public void afterTestExecution(ExtensionContext context) {
     if (context.getExecutionException().isPresent())
-      ExtentLogger.log().fail(context.getExecutionException().get().getLocalizedMessage());
+      ExtentLogger.log().fail(context.getExecutionException().orElseThrow().getLocalizedMessage());
     else ExtentLogger.log().pass(context.getDisplayName());
   }
 

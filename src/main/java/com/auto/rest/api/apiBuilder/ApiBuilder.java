@@ -1,6 +1,5 @@
 package com.auto.rest.api.apiBuilder;
 
-import com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodFactory;
 import com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodType;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -8,7 +7,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Map;
-import java.util.function.Supplier;
+
+import static com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodFactory.apiMethodFactory;
 
 public class ApiBuilder {
   private final RequestSpecBuilder requestSpecBuilder;
@@ -33,11 +33,7 @@ public class ApiBuilder {
   }
 
   public Response fetchResponse(final ApiMethodType apiMethodType, final String endPoint) {
-    Supplier<ApiMethodFactory> apiMethodFactory = ApiMethodFactory::new;
-    return apiMethodFactory
-        .get()
-        .fetchFactoryMethod(apiMethodType)
-        .fetchResponse(createRequestSpec(), endPoint);
+    return apiMethodFactory().get(apiMethodType).response(createRequestSpec(), endPoint);
   }
 
   private RequestSpecification createRequestSpec() {

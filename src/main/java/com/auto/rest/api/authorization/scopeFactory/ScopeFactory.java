@@ -13,9 +13,13 @@ public final class ScopeFactory {
     map.put(UserScope.DEVELOPER, IAuthScope::developer);
   }
 
-  public ScopeFactory() {}
+  private ScopeFactory() {}
 
-  public IAuthScope user(final UserScope userScope) {
+  public static ScopeFactory scopeFactory() {
+    return new ScopeFactory();
+  }
+
+  public IAuthScope get(final UserScope userScope) {
     Supplier<IAuthScope> authScope = map.get(userScope);
     if (Objects.isNull(authScope))
       throw new IllegalArgumentException("No such user scope is present : " + userScope);

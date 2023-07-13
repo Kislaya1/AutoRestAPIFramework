@@ -11,14 +11,14 @@ import static com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodType.POST;
 @SuppressWarnings("unchecked")
 public class TokenAPI {
   private static final IProdEnvConfig config = ConfigFactory.create(IProdEnvConfig.class);
-  private static final String baseUri = config.BASE_URL();
+  private static final String BASE_URL = config.BASE_URL();
 
   private final String authToken;
 
   private TokenAPI() {
     this.authToken =
         new ApiBuilder()
-            .baseUri(baseUri)
+            .baseUri(BASE_URL)
             .headers(IHeaderUtils.withBasicHeaders().fetch())
             .body(TokenRequest.getTokenRequest())
             .fetchResponse(POST, config.AUTH_ENDPOINT())

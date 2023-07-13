@@ -29,5 +29,5 @@ public interface IApiMethods {
         requestSpecification.delete(endPoint).then().log().all().extract().response();
   }
 
-  Response fetchResponse(final RequestSpecification requestSpecification, final String endPoint);
+  Response response(final RequestSpecification requestSpecification, final String endPoint);
 }

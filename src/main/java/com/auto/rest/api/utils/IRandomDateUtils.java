@@ -10,7 +10,7 @@ public interface IRandomDateUtils {
     final Supplier<LocalDate> startDate = () -> LocalDate.now().minusMonths(6);
     final Supplier<LocalDate> endDate = LocalDate::now;
 
-    return (dateTimeFormatter) ->
+    return dateTimeFormatter ->
         startDate
             .get()
             .datesUntil(endDate.get())
@@ -24,7 +24,7 @@ public interface IRandomDateUtils {
   static IRandomDateUtils currentDate() {
     final Supplier<LocalDate> dateSupplier = LocalDate::now;
 
-    return (dateTimeFormatter) -> dateSupplier.get().format(dateTimeFormatter);
+    return dateTimeFormatter -> dateSupplier.get().format(dateTimeFormatter);
   }
 
   String withDateFormatter(final DateTimeFormatter dateTimeFormatter);

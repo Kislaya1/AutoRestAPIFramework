@@ -1,6 +1,6 @@
 package com.auto.rest.api.apiBuilder.apiMethodFactory;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -8,7 +8,8 @@ import java.util.function.Supplier;
 import static com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodType.*;
 
 public final class ApiMethodFactory {
-  private static final Map<ApiMethodType, Supplier<IApiMethods>> map = new HashMap<>();
+  private static final Map<ApiMethodType, Supplier<IApiMethods>> map =
+      new EnumMap<>(ApiMethodType.class);
 
   static {
     map.put(GET, IApiMethods::getMethod);
@@ -18,9 +19,13 @@ public final class ApiMethodFactory {
     map.put(DELETE, IApiMethods::deleteMethod);
   }
 
-  public ApiMethodFactory() {}
+  private ApiMethodFactory() {}
 
-  public IApiMethods fetchFactoryMethod(final ApiMethodType apiMethodType) {
+  public static ApiMethodFactory apiMethodFactory() {
+    return new ApiMethodFactory();
+  }
+
+  public IApiMethods get(final ApiMethodType apiMethodType) {
     Supplier<IApiMethods> apiMethods = map.get(apiMethodType);
     if (Objects.isNull(apiMethods))
       throw new IllegalArgumentException("No such api method is available " + apiMethodType);
