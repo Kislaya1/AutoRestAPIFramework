@@ -22,8 +22,8 @@ public class FrameworkListener
   @Override
   public void afterTestExecution(ExtensionContext context) {
     if (context.getExecutionException().isPresent())
-      ExtentLogger.log().fail(context.getExecutionException().orElseThrow().getLocalizedMessage());
-    else ExtentLogger.log().pass(context.getDisplayName());
+      ExtentLogger.fail(context.getExecutionException().orElseThrow().getLocalizedMessage());
+    else ExtentLogger.pass(context.getDisplayName());
   }
 
   @Override

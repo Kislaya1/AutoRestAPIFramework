@@ -89,7 +89,6 @@ public class BookingTests {
   void assertThatUserCanGetAllBookings() {
     // Act
     Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
-
     // Assert
     BookingAssert.verify(getAllBookingResponse)
         .statusCodeIs(SC_OK)
@@ -102,7 +101,6 @@ public class BookingTests {
     // Act
     Response getSingleBookingResponse =
         BookingAPI.uses(UserScope.DEVELOPER).toGetBookingPresent(bookingId);
-
     // Assert
     BookingAssert.verify(getSingleBookingResponse)
         .statusCodeIs(SC_OK)
@@ -117,7 +115,6 @@ public class BookingTests {
     Response partialUpdatedBookingResponse =
         BookingAPI.uses(UserScope.ADMIN)
             .toPartiallyUpdateBookingPresent(partialUpdatedBookingRequest, bookingId);
-
     // Assert
     BookingAssert.verify(partialUpdatedBookingResponse)
         .statusCodeIs(SC_OK)

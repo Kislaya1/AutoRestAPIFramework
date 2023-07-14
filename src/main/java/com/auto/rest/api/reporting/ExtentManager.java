@@ -3,23 +3,19 @@ package com.auto.rest.api.reporting;
 import com.aventstack.extentreports.ExtentTest;
 
 public final class ExtentManager {
-  private static ThreadLocal<ExtentTest> exTest = new ThreadLocal<>();
+  private static final ThreadLocal<ExtentTest> exTest = new ThreadLocal<>();
 
   private ExtentManager() {}
 
-  public static synchronized ExtentManager manage() {
-    return new ExtentManager();
-  }
-
-  ExtentTest getTest() {
+  static synchronized ExtentTest getTest() {
     return exTest.get();
   }
 
-  void setTest(ExtentTest test) {
+  static synchronized void setTest(ExtentTest test) {
     exTest.set(test);
   }
 
-  void removeTestThread() {
+  static synchronized void removeTestThread() {
     exTest.remove();
   }
 }

@@ -30,12 +30,12 @@ public final class ExtentReport {
 
   public void createTest(@NonNull final String testName) {
     ExtentTest test = extentReports.createTest(testName);
-    ExtentManager.manage().setTest(test);
+    ExtentManager.setTest(test);
   }
 
   public void tearDownReport() {
     extentReports.flush();
-    ExtentManager.manage().removeTestThread();
+    ExtentManager.removeTestThread();
   }
 
   private void createDir() {
