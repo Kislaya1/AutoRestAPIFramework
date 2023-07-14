@@ -20,3 +20,5 @@ nbdist/
 ### Project Specific ###
 report-output/
 target/
+/allure-results/*
+/allure-reports/*

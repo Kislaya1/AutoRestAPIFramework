@@ -7,14 +7,12 @@ import com.auto.rest.api.controller.booking.BookingAPI;
 import com.auto.rest.api.enums.CommonLocations;
 import com.auto.rest.api.pojo.booking.Booking;
 import com.auto.rest.api.pojo.booking.BookingData;
-import com.auto.rest.api.reporting.FrameworkListener;
 import com.auto.rest.api.utils.DataMockUtils;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
@@ -45,7 +43,6 @@ import static org.apache.http.HttpStatus.SC_OK;
  * Under Assertion Msg print the actual and expected values also. -- Done
  * */
 
-@ExtendWith(FrameworkListener.class)
 public class BookingTests {
   private String bookingId;
 
