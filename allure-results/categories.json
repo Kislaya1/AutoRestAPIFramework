@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Successful Test Cases",
+    "matchedStatuses": [
+      "passed"
+    ]
+  },
+  {
+    "name": "Failed Test Cases",
+    "matchedStatuses": [
+      "failed"
+    ]
+  },
+  {
+    "name": "Ignored Test Cases",
+    "matchedStatuses": [
+      "skipped"
+    ]
+  },
+  {
+    "name": "Broken Test Cases",
+    "matchedStatuses": [
+      "broken"
+    ]
+  },
+  {
+    "name": "Outdated Test Cases",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "traceRegex": ".*Exception.*"
+  },
+  {
+    "name": "Infrastructure Problems",
+    "matchedStatuses": [
+      "broken",
+      "failed"
+    ],
+    "messageRegex": ".*bye-bye.*"
+  }
+]
