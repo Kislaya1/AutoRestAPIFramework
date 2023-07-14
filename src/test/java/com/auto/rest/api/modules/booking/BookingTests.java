@@ -10,6 +10,8 @@ import com.auto.rest.api.pojo.booking.BookingData;
 import com.auto.rest.api.utils.DataMockUtils;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -56,6 +58,7 @@ public class BookingTests {
 
   @BeforeEach
   @Description("Creating New Booking Before Each Tests")
+  @Severity(SeverityLevel.BLOCKER)
   public void setUp() {
     Booking bookingBody = DataMockUtils.fetchBookingRequestPojo().mockData();
     // Act
@@ -75,6 +78,7 @@ public class BookingTests {
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
   @Description("Validate That Users Can Update Existing Booking.")
+  @Severity(SeverityLevel.CRITICAL)
   void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
     // Act
     Response updateNewBookingResponse =
@@ -89,6 +93,7 @@ public class BookingTests {
 
   @Test
   @Description("Validate That User Can Get All Bookings Details.")
+  @Severity(SeverityLevel.NORMAL)
   void assertThatUserCanGetAllBookings() {
     // Act
     Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
@@ -101,6 +106,7 @@ public class BookingTests {
 
   @Test
   @Description("Validate That User Can Get Single Booking Details.")
+  @Severity(SeverityLevel.NORMAL)
   void assertThatUserCanGetSingleBooking() {
     // Act
     Response getSingleBookingResponse =
@@ -115,6 +121,7 @@ public class BookingTests {
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
   @Description("Validate That User Can Partially Update Existing Booking Details.")
+  @Severity(SeverityLevel.CRITICAL)
   void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
     // Act
     Response partialUpdatedBookingResponse =
@@ -130,6 +137,7 @@ public class BookingTests {
 
   @AfterEach
   @Description("Deleting Existing Booking Before Each Tests")
+  @Severity(SeverityLevel.BLOCKER)
   public void tearDown() {
     // Act
     Response deletedBookingResponse =
