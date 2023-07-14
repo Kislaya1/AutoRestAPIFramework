@@ -18,6 +18,11 @@ nbdist/
 .mvn/
 
 ### Project Specific ###
-report-output/
-target/
+/target
 /allure-results/*
+/allure-reports/*
+.idea
+/*.iml
+!.gitkeep
+!allure-results/categories.json
+!allure-results/environment.properties
