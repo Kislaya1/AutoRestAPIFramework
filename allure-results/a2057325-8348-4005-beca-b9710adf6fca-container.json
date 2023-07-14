@@ -1,1 +1,11 @@
-{"uuid":"a2057325-8348-4005-beca-b9710adf6fca","name":"assertThatUsersCanUpdateExistingBooking(Booking)","children":["493c15c6-291f-4a55-b7a9-9439746e7bf9"],"befores":[],"afters":[],"start":1689327886724,"stop":1689327888192}
+{
+  "uuid": "a2057325-8348-4005-beca-b9710adf6fca",
+  "name": "assertThatUsersCanUpdateExistingBooking(Booking)",
+  "children": [
+    "493c15c6-291f-4a55-b7a9-9439746e7bf9"
+  ],
+  "befores": [],
+  "afters": [],
+  "start": 1689327886724,
+  "stop": 1689327888192
+}

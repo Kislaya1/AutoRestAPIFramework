@@ -8,6 +8,8 @@ import com.auto.rest.api.enums.CommonLocations;
 import com.auto.rest.api.pojo.booking.Booking;
 import com.auto.rest.api.pojo.booking.BookingData;
 import com.auto.rest.api.utils.DataMockUtils;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -43,6 +45,7 @@ import static org.apache.http.HttpStatus.SC_OK;
  * Under Assertion Msg print the actual and expected values also. -- Done
  * */
 
+@Feature("Booking APIs Automation")
 public class BookingTests {
   private String bookingId;
 
@@ -52,6 +55,7 @@ public class BookingTests {
   }
 
   @BeforeEach
+  @Description("Creating New Booking Before Each Tests")
   public void setUp() {
     Booking bookingBody = DataMockUtils.fetchBookingRequestPojo().mockData();
     // Act
@@ -70,6 +74,7 @@ public class BookingTests {
 
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
+  @Description("Validate That Users Can Update Existing Booking.")
   void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
     // Act
     Response updateNewBookingResponse =
@@ -83,6 +88,7 @@ public class BookingTests {
   }
 
   @Test
+  @Description("Validate That User Can Get All Bookings Details.")
   void assertThatUserCanGetAllBookings() {
     // Act
     Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
@@ -94,6 +100,7 @@ public class BookingTests {
   }
 
   @Test
+  @Description("Validate That User Can Get Single Booking Details.")
   void assertThatUserCanGetSingleBooking() {
     // Act
     Response getSingleBookingResponse =
@@ -107,6 +114,7 @@ public class BookingTests {
 
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
+  @Description("Validate That User Can Partially Update Existing Booking Details.")
   void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
     // Act
     Response partialUpdatedBookingResponse =
@@ -121,6 +129,7 @@ public class BookingTests {
   }
 
   @AfterEach
+  @Description("Deleting Existing Booking Before Each Tests")
   public void tearDown() {
     // Act
     Response deletedBookingResponse =
