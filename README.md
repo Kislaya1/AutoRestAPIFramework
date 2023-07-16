@@ -40,17 +40,17 @@ Winteringham for those wanting to learn more about API testing and tools.
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Challenges Faced </span>
 
 - [x] Use a generic mechanism in order to automate any REST APIs which should be independent of any Applications Under Test.<br />
-Solution : Used Builder and Factory Design Pattern in order to achieve it.
+<b>Solution</b> : Used Builder and Factory Design Pattern in order to achieve it.
 - [x] Creates APIs so that they are scope/role agnostic.<br />
-Solution : Used Factory Design Pattern in order to achieve it.
+<b>Solution</b> : Used Factory Design Pattern in order to achieve it.
 - [x] It becomes very difficult to create and maintain POJOs.<br />
-Solution : Used PODAM library for same, it autofills POJOs with random fake data.
+<b>Solution</b> : Used PODAM library for same, it autofills POJOs with random fake data.
 - [x] There is a lot of boilerplate code involved when trying to fetch data with a property file in Java.<br />
-Solution : Used Owner Library in order to fetch properties file data using a simple Annotation Based Approach.
+<b>Solution</b> : Used Owner Library in order to fetch properties file data using a simple Annotation Based Approach.
 - [x] Creating a fluent assertion as part of this framework was one of the biggest challenge.<br />
-Solution : Used basic inheritance principle using [SELF_TYPE](https://blog.joda.org/2007/08/java-7-self-types_1953.html) in java.
+<b>Solution</b> : Used basic inheritance principle using [SELF_TYPE](https://blog.joda.org/2007/08/java-7-self-types_1953.html) in java.
 - [x] How to provide Parameterize test with random data into it.<br />
-Solution : Used Junit5 in combination with Fixture Factory library in order to create random parameterized data.
+<b>Solution</b> : Used Junit5 in combination with Fixture Factory library in order to create random parameterized data.
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Tools Set </span>
 
