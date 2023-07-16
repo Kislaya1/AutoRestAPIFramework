@@ -26,11 +26,10 @@ Winteringham for those wanting to learn more about API testing and tools.
   and data to write tests for different user roles and scopes.
 - [x] Uses [Singleton Design Pattern](https://www.baeldung.com/java-singleton) in order to reuse the same auth token in
   all the tests for the same role/scope.
-- [x] Uses [Extent Report](https://www.extentreports.com/) for reporting and logging purpose.
+- [x] Uses [Junit5 Reporting](https://howtodoinjava.com/junit5/junit-html-report/).
 - [x] Uses [PODAM](http://mtedone.github.io/podam/) library to auto-fill Java POJOs with random fake data.
-- [x] Uses Fixture Factory Library in order to build and organize fake objects for tests using template format. For
-  further understanding check out
-  the [BookingTemplates](https://github.com/Kislaya1/RestApiProFramework/blob/main/src/main/java/com/rest/api/pro/templates/BookingTemplates.java)
+- [x] Uses [Fixture Factory Library](https://github.com/six2six/fixture-factory) in order to build and organize fake objects for tests using template format. For
+  further understanding check out the [BookingTemplates](https://github.com/Kislaya1/RestApiProFramework/blob/main/src/main/java/com/rest/api/pro/templates/BookingTemplates.java)
   file inside the project.
 - [x] Uses [Owner Library](https://matteobaccan.github.io/owner/) in order to fetch properties file data using a simple
   Annotation Based Approach. The user is not required to code for loading, converting, and managing of properties files.
@@ -40,30 +39,58 @@ Winteringham for those wanting to learn more about API testing and tools.
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Challenges Faced </span>
 
-1.
+- [x] Use a generic mechanism in order to automate any REST APIs which should be independent of any Applications Under Test.
+Solution : Used Builder and Factory Design Pattern in order to achieve it.
+- [x] Creates APIs so that they are scope/role agnostic.
+Solution : Used Factory Design Pattern in order to achieve it.
+- [x] It becomes very difficult to create and maintain POJOs.
+Solution : Used PODAM library for same, it autofills POJOs with random fake data.
+- [x] There is a lot of boilerplate code involved when trying to fetch data with a property file in Java.
+Solution : Used Owner Library in order to fetch properties file data using a simple Annotation Based Approach.
+- [x] Creating a fluent assertion as part of this framework was one of the biggest challenge.
+Solution : Used basic inheritance principle using [SELF_TYPE](https://blog.joda.org/2007/08/java-7-self-types_1953.html) in java.
+- [x] How to provide Parameterize test with random data into it.
+Solution : Used Junit5 in combination with Fixture Factory library in order to create random parameterized data.
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Tools Set </span>
 
-1.
-
-## <span style="font-family: Calibri; font-size: 2.8em;"> Api Test Design (Diagram) </span>
+1. [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) - as language of choice for writing this test framework.
+2. [Junit5](https://junit.org/junit5/) - as a testing framework for the Java programming language.
+3. [Maven 3.8.2+](https://maven.apache.org/) - for project dependency management.
+4. [RestAssured](https://rest-assured.io/) - in order to test and validate REST services in Java.
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Steps to Execute </span>
 
-use the below command to run the test
+1. Use the below maven command in order to execute test cases
+```
+mvn clean test -DENVIRONMENT=<Environment_Name> -D<Environment_Name>_ADMIN_USERNAME=<username> -D<Environment_Name>_ADMIN_PASSWORD=<password>
+```
+Here : 
+a) Environment_Name : It will be based on [env.properties]() file (currently it is either PROD / QA but user can add multiple as required.)
+b) Username and Password : It can be fetched from [Testing Site](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken).
 
-mvn clean test -DENVIRONMENT=<EnvironmentName> -DPROD_ADMIN_USERNAME=<AdminUsername>
--DPROD_ADMIN_PASSWORD=<AdminPassword>
-
-eg :
+For eg : 
+```
 mvn clean test -DENVIRONMENT=PROD -DPROD_ADMIN_USERNAME=admin -DPROD_ADMIN_PASSWORD=password123
+```
 
-Note :
-Environment Names available - PROD, QA Also please provide valid username and password to run this automation. For this
-case username and password can be fetched from this link
+2. Use the below command in order to generate Junit HTML report.
 
-- https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken
+In order to generate report, you just need to add 'site' at the end of mvn clean test command as below : 
+
+```
+mvn clean test -DENVIRONMENT=<Environment_Name> -D<Environment_Name>_ADMIN_USERNAME=<username> -D<Environment_Name>_ADMIN_PASSWORD=<password> site
+```
+
+3. Report will be generated under below directory structure, you can open the report in any browser of your choice
+
+```
+target/site/index.html
+```
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Special Mentions </span>
-
-1. 
+I would like to thank my wife, family and friends who had inspired me in creating this API framework.
+Would also like to thank [Amuthan](https://github.com/amuthansakthivel/amuthansakthivel) and [PramodKumarYadav](https://github.com/PramodKumarYadav) for their knowledge sharing through their YouTube Channels.
+Guys please go and watch their YouTube Channels.
+1. [Amuthan](https://www.youtube.com/@TestingMiniBytes)
+2. [PramodKumarYadav](https://www.youtube.com/@powertester5596)
