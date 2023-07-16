@@ -87,10 +87,3 @@ mvn clean test -DENVIRONMENT=<Environment_Name> -D<Environment_Name>_ADMIN_USERN
 ```
 target/site/index.html
 ```
-
-## <span style="font-family: Calibri; font-size: 2.8em;"> Special Mentions </span>
-I would like to thank my wife, family and friends who had inspired me in creating this API framework.
-Would also like to thank [Amuthan](https://github.com/amuthansakthivel/amuthansakthivel) and [PramodKumarYadav](https://github.com/PramodKumarYadav) for their knowledge sharing through their YouTube Channels.
-Guys please go and watch their YouTube Channels.
-1. [Amuthan](https://www.youtube.com/@TestingMiniBytes)
-2. [PramodKumarYadav](https://www.youtube.com/@powertester5596)
