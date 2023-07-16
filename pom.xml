@@ -3,22 +3,21 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.example</groupId>
     <artifactId>AutoRestApiFramework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
-        <junit.jupiter.version>5.8.0-M1</junit.jupiter.version>
-        <junit.platform.version>1.8.0-M1</junit.platform.version>
-        <allure.maven.version>2.11.2</allure.maven.version>
-        <allure.junit5.version>2.14.0</allure.junit5.version>
-        <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <aspectj.version>1.9.6</aspectj.version>
+        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+        <maven.surefix.plugin>3.0.0-M4</maven.surefix.plugin>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <rest-assured.version>5.3.0</rest-assured.version>
+        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <junit-platform-launcher.version>1.9.2</junit-platform-launcher.version>
         <jackson.version>2.15.2</jackson.version>
         <jackson-datatype-jdk8.version>2.14.2</jackson-datatype-jdk8.version>
         <typesafe.version>1.4.2</typesafe.version>
@@ -29,55 +28,20 @@
         <podam.version>7.2.11.RELEASE</podam.version>
         <lombok.version>1.18.28</lombok.version>
         <java.faker.version>1.0.2</java.faker.version>
-        <testng.version>7.8.0</testng.version>
         <fixture-factory.version>3.1.0</fixture-factory.version>
-        <allure.version>2.23.0</allure.version>
-        <rest-assured.version>5.3.0</rest-assured.version>
-        <junit-platform-launcher.version>1.9.2</junit-platform-launcher.version>
     </properties>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin.version}</version>
-                <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                    <systemProperties>
-                        <property>
-                            <name>junit.jupiter.extensions.autodetection.enabled</name>
-                            <value>true</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>${allure.maven.version}</version>
-                <configuration>
-                    <reportVersion>2.4.1</reportVersion>
-                </configuration>
+                <version>${maven.surefix.plugin}</version>
             </plugin>
         </plugins>
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
         <dependency>
             <groupId>br.com.six2six</groupId>
             <artifactId>fixture-factory</artifactId>
