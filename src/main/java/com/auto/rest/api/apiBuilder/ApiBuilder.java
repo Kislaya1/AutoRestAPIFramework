@@ -10,7 +10,7 @@ import java.util.Map;
 
 import static com.auto.rest.api.apiBuilder.apiMethodFactory.ApiMethodFactory.apiMethodFactory;
 
-public class ApiBuilder {
+public final class ApiBuilder {
   private final RequestSpecBuilder requestSpecBuilder;
 
   public ApiBuilder() {
