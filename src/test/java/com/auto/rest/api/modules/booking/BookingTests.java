@@ -31,12 +31,9 @@ public class BookingTests {
   @BeforeEach
   public void setUp() {
     Booking bookingBody = DataMockUtils.fetchBookingRequestPojo().mockData();
-    // Act
     Response createdBookingResponse =
         BookingAPI.uses(UserScope.ADMIN).toCreateNewBooking(bookingBody);
-    // Fetch Booking ID
     bookingId = createdBookingResponse.as(BookingData.class).getBookingId();
-    // Assert
     BookingAssert.verify(createdBookingResponse)
         .statusCodeIs(SC_OK)
         .hasBookingId(bookingId)
@@ -48,10 +45,8 @@ public class BookingTests {
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
   void assertThatUsersCanUpdateExistingBooking(final Booking updatedBookingRequest) {
-    // Act
     Response updateNewBookingResponse =
         BookingAPI.uses(UserScope.ADMIN).toUpdateBookingPresent(updatedBookingRequest, bookingId);
-    // Assert
     BookingAssert.verify(updateNewBookingResponse)
         .statusCodeIs(SC_OK)
         .hasBooking(updatedBookingRequest)
@@ -61,9 +56,7 @@ public class BookingTests {
 
   @Test
   void assertThatUserCanGetAllBookings() {
-    // Act
     Response getAllBookingResponse = BookingAPI.uses(UserScope.DEVELOPER).toGetAllBookingsPresent();
-    // Assert
     BookingAssert.verify(getAllBookingResponse)
         .statusCodeIs(SC_OK)
         .matchesSchema(GET_ALL_BOOKING_SCHEMA.getFilePath())
@@ -72,10 +65,8 @@ public class BookingTests {
 
   @Test
   void assertThatUserCanGetSingleBooking() {
-    // Act
     Response getSingleBookingResponse =
         BookingAPI.uses(UserScope.DEVELOPER).toGetBookingPresent(bookingId);
-    // Assert
     BookingAssert.verify(getSingleBookingResponse)
         .statusCodeIs(SC_OK)
         .matchesSchema(BOOKING_SCHEMA.getFilePath())
@@ -85,11 +76,9 @@ public class BookingTests {
   @ParameterizedTest
   @ArgumentsSource(BookingArgumentsProvider.class)
   void assertThatUserCanPartiallyUpdateExistingBooking(final Booking partialUpdatedBookingRequest) {
-    // Act
     Response partialUpdatedBookingResponse =
         BookingAPI.uses(UserScope.ADMIN)
             .toPartiallyUpdateBookingPresent(partialUpdatedBookingRequest, bookingId);
-    // Assert
     BookingAssert.verify(partialUpdatedBookingResponse)
         .statusCodeIs(SC_OK)
         .hasBooking(partialUpdatedBookingRequest)
@@ -99,10 +88,8 @@ public class BookingTests {
 
   @AfterEach
   public void tearDown() {
-    // Act
     Response deletedBookingResponse =
         BookingAPI.uses(UserScope.ADMIN).toDeleteBookingPresent(bookingId);
-    // Assert
     BookingAssert.verify(deletedBookingResponse).statusCodeIs(SC_CREATED);
   }
 }
