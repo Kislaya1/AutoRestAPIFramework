@@ -54,7 +54,7 @@ Winteringham for those wanting to learn more about API testing and tools.
 
 ## <span style="font-family: Calibri; font-size: 2.8em;"> Tools Set </span>
 
-1. [JDK 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) - as language of choice for writing this test framework.
+1. [Java 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) - as language of choice for writing this test framework.
 2. [Junit5](https://junit.org/junit5/) - as a testing framework for the Java programming language.
 3. [Maven 3.8.2+](https://maven.apache.org/) - for project dependency management.
 4. [RestAssured](https://rest-assured.io/) - in order to test and validate REST services in Java.
