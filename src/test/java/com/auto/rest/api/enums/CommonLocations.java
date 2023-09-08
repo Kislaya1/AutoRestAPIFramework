@@ -1,7 +1,7 @@
 package com.auto.rest.api.enums;
 
 public enum CommonLocations {
-  TEMPLATES_LOCATION("com.rest.api.pro.templates");
+  TEMPLATES_LOCATION("com.auto.rest.api.templates");
 
   private String location;
 
